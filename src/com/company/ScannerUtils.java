@@ -12,7 +12,7 @@ public class ScannerUtils {
         this.scanner= new Scanner(System.in);
     }
 
-    public int getInt(String message, Predicate<Integer> predicate) {
+    public int getInt(String message, Predicate<Integer> validInput) {
         int input;
         boolean retry = false;
 
@@ -28,11 +28,11 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
-    public String getString(String message, Predicate<String> predicate) {
+    public String getString(String message, Predicate<String> validInput) {
         String input;
         boolean retry = false;
 
@@ -44,11 +44,11 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
-    public double getDouble(String message, Predicate<Double> predicate) {
+    public double getDouble(String message, Predicate<Double> validInput) {
         double input;
         boolean retry = false;
 
@@ -64,11 +64,11 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
-    public double getFloat(String message, Predicate<Float> predicate) {
+    public double getFloat(String message, Predicate<Float> validInput) {
         float input;
         boolean retry = false;
 
@@ -84,11 +84,11 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
-    public double getByte(String message, Predicate<Byte> predicate) {
+    public double getByte(String message, Predicate<Byte> validInput) {
         byte input;
         boolean retry = false;
 
@@ -104,11 +104,11 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
-    public char getChar(String message, Predicate<Character> predicate) {
+    public char getChar(String message, Predicate<Character> validInput) {
         char input;
         boolean retry = false;
 
@@ -120,11 +120,15 @@ public class ScannerUtils {
             } catch(InputMismatchException e) {
                 retry = true;
             }
-        } while(!predicate.test(input) || retry);
+        } while(!validInput.test(input) || retry);
         return input;
     }
 
     public void clearBuffer() {
         scanner.nextLine();
+    }
+
+    public void close() {
+        scanner.close();
     }
 }
