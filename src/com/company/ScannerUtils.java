@@ -60,11 +60,71 @@ public class ScannerUtils {
             }
             try {
                 System.out.print(message);
-                input = scanner.nextInt();
+                input = scanner.nextDouble();
             } catch(InputMismatchException e) {
                 retry = true;
             }
         } while(!predicate.test(input) || retry);
         return input;
+    }
+
+    public double getFloat(String message, Predicate<Float> predicate) {
+        float input;
+        boolean retry = false;
+
+        do {
+            input = 0.0f;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextFloat();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(!predicate.test(input) || retry);
+        return input;
+    }
+
+    public double getByte(String message, Predicate<Byte> predicate) {
+        byte input;
+        boolean retry = false;
+
+        do {
+            input = 0;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextByte();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(!predicate.test(input) || retry);
+        return input;
+    }
+
+    public char getChar(String message, Predicate<Character> predicate) {
+        char input;
+        boolean retry = false;
+
+        do {
+            input = 0;
+            try {
+                System.out.print(message);
+                input = scanner.next().charAt(0);
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(!predicate.test(input) || retry);
+        return input;
+    }
+
+    public void clearBuffer() {
+        scanner.nextLine();
     }
 }
