@@ -36,8 +36,6 @@ public class Main {
         List<List<Double>> coordinates = new ArrayList<>(qtd);
         tests.add(coordinates);
 
-        System.out.println(coordinates.size());
-
         for (int i = 0; i < qtd; i++) {
             System.out.println("\n-------------------------------------------------");
             coordinates.add(new ArrayList<>());
