@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -24,9 +25,21 @@ public class Main {
             qtd = scanner.getInt("\nType the number of rectangles: ", i -> i >= 0 && i <= 10000);
         } while(fillTestList(tests, qtd));
 
+        char resp = scanner.getChar("\nDo you want to revise the input? [Y]es [N]o\n");
+
+        if(resp == 'y' || resp == 'Y') {
+            System.out.println("---------------INPUT--------------");
+            System.out.println(toString(tests));
+        }
+
         scanner.close();
 
-        System.out.println(toString(tests));
+        System.out.println("---------------RESULT--------------");
+
+        for(int i = 0; i < tests.size(); i++) {
+            System.out.println("Test " + (i + 1) + ": ");
+            System.out.println(Arrays.toString(getIntersection(tests.get(i))));
+        }
     }
 
     private boolean fillTestList(List<List<List<Double>>> tests, int qtd) {
@@ -51,6 +64,11 @@ public class Main {
         return true;
     }
 
+    private double[] getIntersection(List<List<Double>> rectangles) {
+        return new double[0];
+    }
+
+    //Debug
     private String toString(List<List<List<Double>>> tests) {
         StringBuilder builder = new StringBuilder();
 

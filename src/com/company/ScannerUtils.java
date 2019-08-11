@@ -29,6 +29,28 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+
+        return input;
+    }
+
+    public int getInt(String message) {
+        int input;
+        boolean retry = false;
+
+        do {
+            input = 0;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextInt();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
@@ -45,6 +67,23 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+        return input;
+    }
+
+    public String getString(String message) {
+        String input;
+        boolean retry = false;
+
+        do {
+            input = "";
+            try {
+                System.out.print(message);
+                input = scanner.nextLine();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
@@ -65,6 +104,28 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+
+        return input;
+    }
+
+    public double getDouble(String message) {
+        double input;
+        boolean retry = false;
+
+        do {
+            input = 0.0;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextDouble();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
@@ -85,6 +146,28 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+
+        return input;
+    }
+
+    public double getFloat(String message) {
+        float input;
+        boolean retry = false;
+
+        do {
+            input = 0.0f;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextFloat();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
@@ -105,6 +188,28 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+
+        return input;
+    }
+
+    public double getByte(String message) {
+        byte input;
+        boolean retry = false;
+
+        do {
+            input = 0;
+            if(retry) {
+                scanner.nextLine();
+                retry = false;
+            }
+            try {
+                System.out.print(message);
+                input = scanner.nextByte();
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
@@ -121,6 +226,24 @@ public class ScannerUtils {
                 retry = true;
             }
         } while(!validInput.test(input) || retry);
+
+        return input;
+    }
+
+    public char getChar(String message) {
+        char input;
+        boolean retry = false;
+
+        do {
+            input = 0;
+            try {
+                System.out.print(message);
+                input = scanner.next().charAt(0);
+            } catch(InputMismatchException e) {
+                retry = true;
+            }
+        } while(retry);
+
         return input;
     }
 
