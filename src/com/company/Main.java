@@ -25,9 +25,16 @@ public class Main {
             qtd = scanner.getInt("\nType the number of rectangles: ", i -> i >= 0 && i <= 10000);
         } while(fillTestList(tests, qtd));
 
-        char resp = scanner.getChar("\nDo you want to revise the input? [Y]es [N]o\n");
+        scanner.clearBuffer();
 
-        if(resp == 'y' || resp == 'Y') {
+        char resp = scanner.getString(
+                "\nDo you want to review the input? [Y]es [N]o\n",
+                c -> c.equalsIgnoreCase("y") || c.equalsIgnoreCase("n")
+        ).charAt(0);
+
+        resp = String.valueOf(resp).toLowerCase().charAt(0);
+
+        if(resp == 'y') {
             System.out.println("---------------INPUT--------------");
             System.out.println(toString(tests));
         }
@@ -38,6 +45,14 @@ public class Main {
 
         for(int i = 0; i < tests.size(); i++) {
             System.out.println("Test " + (i + 1) + ": ");
+
+            double[] response = getIntersection(tests.get(i));
+
+            if(response == null) {
+                System.out.println("None");
+                continue;
+            }
+
             System.out.println(Arrays.toString(getIntersection(tests.get(i))));
         }
     }
@@ -64,8 +79,9 @@ public class Main {
         return true;
     }
 
+    //TODO
     private double[] getIntersection(List<List<Double>> rectangles) {
-        return new double[0];
+        return null;
     }
 
     //Debug

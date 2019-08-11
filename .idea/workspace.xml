@@ -4,9 +4,7 @@
     <list default="true" id="b7e11ccb-57f0-40fd-a00f-b8f9fbf5f917" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/macaco_prego/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/macaco_prego/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/macaco_prego/com/company/ScannerUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/macaco_prego/com/company/ScannerUtils.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/ScannerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/ScannerUtils.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
