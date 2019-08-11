@@ -33,14 +33,14 @@ public class Main {
         if(qtd == 0)
             return false;
 
-        List<List<Double>> coordinates = new ArrayList<>(qtd);
-        tests.add(coordinates);
+        List<List<Double>> rectangles = new ArrayList<>(qtd);
+        tests.add(rectangles);
 
         for (int i = 0; i < qtd; i++) {
             System.out.println("\n-------------------------------------------------");
-            coordinates.add(new ArrayList<>(4));
+            rectangles.add(new ArrayList<>(4));
             for (int j = 0; j < 4; j++) {
-                coordinates.get(i).add(
+                rectangles.get(i).add(
                         scanner.getDouble(
                             "\nType coordinate " + getCoordinateChar(j) + " for rectangle " + (i + 1) + ": ",
                             n -> n >= -10000 && n <= 10000
