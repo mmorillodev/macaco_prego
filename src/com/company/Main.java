@@ -38,7 +38,7 @@ public class Main {
 
         for (int i = 0; i < qtd; i++) {
             System.out.println("\n-------------------------------------------------");
-            coordinates.add(new ArrayList<>());
+            coordinates.add(new ArrayList<>(4));
             for (int j = 0; j < 4; j++) {
                 coordinates.get(i).add(
                         scanner.getDouble(
