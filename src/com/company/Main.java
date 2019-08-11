@@ -1,13 +1,14 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Main {
 
-    public final ScannerUtils scanner;
+    private final ScannerUtils scanner;
 
-    public Main() {
+    private Main() {
         scanner = new ScannerUtils();
     }
 
@@ -15,39 +16,60 @@ public class Main {
         new Main().main();
     }
 
-    public void main() {
-        List<int[][]> tests = new ArrayList<>(5);
-        int qtd = 0;
+    private void main() {
+        List<List<List<Double>>> tests = new LinkedList<>();
+        int qtd;
 
         do {
             qtd = scanner.getInt("\nType the number of rectangles: ", i -> i >= 0 && i <= 10000);
-        } while(getTest(tests, qtd));
+        } while(fillTestList(tests, qtd));
 
-        System.out.println(tests.toString());
+        scanner.close();
+
+        System.out.println(toString(tests));
     }
 
-    public boolean getTest(List<int[][]> tests, int qtd) {
+    private boolean fillTestList(List<List<List<Double>>> tests, int qtd) {
         if(qtd == 0)
             return false;
 
-        int[][] coordinates = new int[qtd][4];
+        List<List<Double>> coordinates = new ArrayList<>(qtd);
         tests.add(coordinates);
 
-        for (int i = 0; i < coordinates.length; i++) {
+        System.out.println(coordinates.size());
+
+        for (int i = 0; i < qtd; i++) {
             System.out.println("\n-------------------------------------------------");
-            for (int j = 0; j < coordinates[i].length; j++) {
-                coordinates[i][j] =
-                        scanner.getInt(
-                                "\nType coordinate " + getCoordenateChar(j) + " for rectangle " + (i + 1) + ": ",
-                                n -> n >= -10000 && n <= 10000
-                        );
+            coordinates.add(new ArrayList<>());
+            for (int j = 0; j < 4; j++) {
+                coordinates.get(i).add(
+                        scanner.getDouble(
+                            "\nType coordinate " + getCoordinateChar(j) + " for rectangle " + (i + 1) + ": ",
+                            n -> n >= -10000 && n <= 10000
+                        )
+                );
             }
         }
-
         return true;
     }
 
-    public char getCoordenateChar(int index) {
+    private String toString(List<List<List<Double>>> tests) {
+        StringBuilder builder = new StringBuilder();
+
+        for(int i = 0; i < tests.size(); i++) {
+            builder.append("Test ").append((i + 1)).append(":\n");
+            for(int j = 0; j < tests.get(i).size(); j++) {
+                builder.append("\tRectangle ").append((j + 1)).append(":\n");
+                for(int k = 0; k < tests.get(i).get(j).size(); k++) {
+                    builder.append("\t\t").append(getCoordinateChar(k)).append(": ").append(tests.get(i).get(j).get(k)).append("\n");
+                }
+            }
+        }
+
+        return builder.toString();
+    }
+
+    private char getCoordinateChar(int index) {
         switch (index) {
             case 0:
                 return 'X';
