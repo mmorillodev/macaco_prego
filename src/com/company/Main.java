@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,8 +8,11 @@ public class Main {
 
     private final ScannerUtils scanner;
 
+    private final int AXIS_QTD;
+
     private Main() {
         scanner = new ScannerUtils();
+        AXIS_QTD = 4;
     }
 
     public static void main(String[] args) {
@@ -18,7 +20,7 @@ public class Main {
     }
 
     private void main() {
-        List<List<List<Double>>> tests = new LinkedList<>();
+        List<AreaDelimiterTest> tests = new LinkedList<>();
         int qtd;
 
         do
@@ -36,7 +38,7 @@ public class Main {
 
         if(resp == 'y') {
             System.out.println("---------------INPUT--------------");
-            System.out.println(toString(tests));
+            System.out.println(tests.toString());
         }
 
         scanner.close();
@@ -46,59 +48,54 @@ public class Main {
         for(int i = 0; i < tests.size(); i++) {
             System.out.println("Test " + (i + 1) + ": ");
 
-            double[] response = getIntersection(tests.get(i));
+            double[] response = tests.get(i).getIntersection();
 
             if(response == null) {
                 System.out.println("None");
                 continue;
             }
 
-            System.out.println(Arrays.toString(getIntersection(tests.get(i))));
+            System.out.println(Arrays.toString(response));
         }
     }
 
-    private boolean fillTestList(List<List<List<Double>>> tests, int qtd) {
-        if(qtd == 0)
+    private boolean fillTestList(List<AreaDelimiterTest> tests, int areasQtd) {
+        if(areasQtd == 0)
             return false;
 
-        List<List<Double>> rectangles = new ArrayList<>(qtd);
-        tests.add(rectangles);
+        double coordinate;
+        AreaDelimiterTest test = new AreaDelimiterTest(areasQtd);
+        tests.add(test);
 
-        for (int i = 0; i < qtd; i++) {
+        for (int i = 0; i < areasQtd; i++) {
             System.out.println("\n-------------------------------------------------");
-            rectangles.add(new ArrayList<>(4));
-            for (int j = 0; j < 4; j++) {
-                rectangles.get(i).add(
-                        scanner.getDouble(
-                            "\nType coordinate " + getCoordinateChar(j) + " for rectangle " + (i + 1) + ": ",
-                            n -> n >= -10000 && n <= 10000
-                        )
+            test.addArea(new Area());
+            for (int j = 0; j < AXIS_QTD; j++) {
+                coordinate = scanner.getDouble(
+                        "\nType coordinate " + getCoordinateChar(j) + " for rectangle " + (i + 1) + ": ",
+                        n -> n >= -10000 && n <= 10000
                 );
+                setAreaAxis(test.getArea(i), j, coordinate);
             }
         }
         return true;
     }
 
-    //TODO
-    private double[] getIntersection(List<List<Double>> rectangles) {
-        return null;
-    }
-
-    //Debug
-    private String toString(List<List<List<Double>>> tests) {
-        StringBuilder builder = new StringBuilder();
-
-        for(int i = 0; i < tests.size(); i++) {
-            builder.append("Test ").append((i + 1)).append(":\n");
-            for(int j = 0; j < tests.get(i).size(); j++) {
-                builder.append("\tRectangle ").append((j + 1)).append(":\n");
-                for(int k = 0; k < tests.get(i).get(j).size(); k++) {
-                    builder.append("\t\t").append(getCoordinateChar(k)).append(": ").append(tests.get(i).get(j).get(k)).append("\n");
-                }
-            }
+    private void setAreaAxis(Area area, int i, double value) {
+        switch (i) {
+            case 0:
+                area.setXAxis(value);
+                break;
+            case 1:
+                area.setYAxis(value);
+                break;
+            case 2:
+                area.setUAxis(value);
+                break;
+            case 3:
+                area.setVAxis(value);
+                break;
         }
-
-        return builder.toString();
     }
 
     private char getCoordinateChar(int index) {
