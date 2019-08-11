@@ -21,9 +21,9 @@ public class Main {
         List<List<List<Double>>> tests = new LinkedList<>();
         int qtd;
 
-        do {
+        do
             qtd = scanner.getInt("\nType the number of rectangles: ", i -> i >= 0 && i <= 10000);
-        } while(fillTestList(tests, qtd));
+        while(fillTestList(tests, qtd));
 
         scanner.clearBuffer();
 
