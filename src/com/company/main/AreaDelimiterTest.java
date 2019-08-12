@@ -81,6 +81,7 @@ public class AreaDelimiterTest {
     private Area checkInnerArea(Area area) {
         AreaDelimiterTest test = new AreaDelimiterTest();
         Area resultant;
+
         for(Area areaI : this.areas) {
             test.clearAreas();
             test.addArea(area);
