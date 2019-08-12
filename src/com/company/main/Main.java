@@ -1,6 +1,7 @@
-package com.company;
+package com.company.main;
 
-import java.util.Arrays;
+import com.company.utils.ScannerUtils;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,14 +49,14 @@ public class Main {
         for(AreaDelimiterTest test : tests) {
             System.out.println(test.getName() + ": ");
 
-            double[] response = test.getIntersection();
+            Area response = test.getIntersection();
 
             if(response == null) {
                 System.out.println("None");
                 continue;
             }
 
-            System.out.println(Arrays.toString(response));
+            System.out.println(response.toString());
         }
     }
 

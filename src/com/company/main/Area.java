@@ -1,4 +1,4 @@
-package com.company;
+package com.company.main;
 
 public class Area {
     private double xAxis;
@@ -14,7 +14,10 @@ public class Area {
     }
 
     public Area() {
-
+        this.xAxis = 0;
+        this.yAxis = 0;
+        this.uAxis = 0;
+        this.vAxis = 0;
     }
 
     public Area setXAxis(double xAxis) {
@@ -51,6 +54,23 @@ public class Area {
 
     public double getVAxis() {
         return this.vAxis;
+    }
+
+    public Area orderAxis() {
+        double aux;
+
+        if(this.xAxis > this.uAxis) {
+            aux = this.uAxis;
+            this.uAxis = this.xAxis;
+            this.xAxis = aux;
+        }
+        if(this.yAxis < this.vAxis) {
+            aux = this.vAxis;
+            this.vAxis = this.yAxis;
+            this.yAxis = aux;
+        }
+
+        return this;
     }
 
     @Override
