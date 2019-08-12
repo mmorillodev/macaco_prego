@@ -30,7 +30,7 @@ public class Main {
         scanner.clearBuffer();
 
         char resp = scanner.getString(
-                "\nDo you want to review the input? [Y]es [N]o\n",
+                "\nWould you like to review the input? [Y]es [N]o\n",
                 c -> c.equalsIgnoreCase("y") || c.equalsIgnoreCase("n")
         ).charAt(0);
 
@@ -65,7 +65,7 @@ public class Main {
 
         double coordinate;
         AreaDelimiterTest test = new AreaDelimiterTest(areasQtd);
-        test.setName("Test " + tests.size() + 1);
+        test.setName("Test " + (tests.size() + 1));
         tests.add(test);
 
         for (int i = 0; i < areasQtd; i++) {

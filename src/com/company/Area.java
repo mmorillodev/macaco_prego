@@ -17,36 +17,40 @@ public class Area {
 
     }
 
-    public void setXAxis(double xAxis) {
+    public Area setXAxis(double xAxis) {
         this.xAxis = xAxis;
+        return this;
     }
 
     public double getXAxis() {
         return this.xAxis;
     }
 
-    public void setYAxis(double xAxis) {
-        this.xAxis = xAxis;
+    public Area setYAxis(double yAxis) {
+        this.yAxis = yAxis;
+        return this;
     }
 
     public double getYAxis() {
         return this.yAxis;
     }
 
-    public void setUAxis(double xAxis) {
-        this.xAxis = uAxis;
+    public Area setUAxis(double uAxis) {
+        this.uAxis = uAxis;
+        return this;
     }
 
     public double getUAxis() {
         return this.uAxis;
     }
 
-    public void setVAxis(double xAxis) {
-        this.xAxis = vAxis;
+    public Area setVAxis(double vAxis) {
+        this.vAxis = vAxis;
+        return this;
     }
 
     public double getVAxis() {
-        return this.xAxis;
+        return this.vAxis;
     }
 
     @Override

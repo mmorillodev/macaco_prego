@@ -11,6 +11,10 @@ public class AreaDelimiterTest {
         areas = new ArrayList<>(areasQtd);
     }
 
+    public AreaDelimiterTest() {
+        areas = new ArrayList<>();
+    }
+
     public void setName(String testName) {
         this.name = testName;
     }
