@@ -45,10 +45,10 @@ public class Main {
 
         System.out.println("---------------RESULT--------------");
 
-        for(int i = 0; i < tests.size(); i++) {
-            System.out.println("Test " + (i + 1) + ": ");
+        for(AreaDelimiterTest test : tests) {
+            System.out.println(test.getName() + ": ");
 
-            double[] response = tests.get(i).getIntersection();
+            double[] response = test.getIntersection();
 
             if(response == null) {
                 System.out.println("None");
@@ -65,6 +65,7 @@ public class Main {
 
         double coordinate;
         AreaDelimiterTest test = new AreaDelimiterTest(areasQtd);
+        test.setName("Test " + tests.size() + 1);
         tests.add(test);
 
         for (int i = 0; i < areasQtd; i++) {
